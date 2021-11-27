@@ -2,24 +2,27 @@
 
 set -xe
 
-apk add linux-rpi linux-rpi4 raspberrypi-bootloader zram-init
-rc-update add zram-init boot
+apk add linux-rpi raspberrypi-bootloader
 
 echo "modules=loop,squashfs,sd-mod,usb-storage root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes console=tty1 rootwait quiet" > /boot/cmdline.txt
 
 cat <<EOF > /boot/config.txt
+[pi]
+kernel=vmlinuz-rpi
+initramfs initramfs-rpi
+[pi1]
+kernel=vmlinuz-rpi
+initramfs initramfs-rpi
+[pi2]
+kernel=vmlinuz-rpi
+initramfs initramfs-rpi
 [pi3]
 kernel=vmlinuz-rpi
 initramfs initramfs-rpi
 [pi3+]
 kernel=vmlinuz-rpi
 initramfs initramfs-rpi
-[pi4]
-enable_gic=1
-kernel=vmlinuz-rpi4
-initramfs initramfs-rpi4
 [all]
-arm_64bit=1
 include usercfg.txt
 EOF
 
@@ -34,7 +37,6 @@ EOF
 
 cat <<EOF >> /etc/sysctl.conf
 vm.vfs_cache_pressure=500
-vm.swappiness=100
 vm.dirty_background_ratio=1
 vm.dirty_ratio=50
 EOF
