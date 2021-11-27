@@ -12,7 +12,7 @@ for service in modules sysctl hostname bootmisc swclock syslog; do
 	rc-update add $service boot
 done
 
-for service in haveged sshd chronyd local networking; do
+for service in sshd haveged sshd chronyd local networking; do
 	rc-update add $service default
 done
 

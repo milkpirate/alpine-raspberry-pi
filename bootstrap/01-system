@@ -18,6 +18,9 @@ setup-keymap es es
 apk add chrony tzdata
 setup-timezone -z $TARGET_TIMEZONE
 
+# add SSH
+apk add openssh
+
 # other stuff
 apk add nano htop curl wget bash bash-completion findutils
 sed -i 's/\/bin\/ash/\/bin\/bash/g' /etc/passwd
