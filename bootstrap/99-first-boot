@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -x
+set -xe
 
 apk add dosfstools e2fsprogs-extra parted
 
@@ -34,5 +34,5 @@ depend() {
 EOF
 
 chmod +x /etc/init.d/first-boot /usr/bin/first-boot
-rc-update --verbose --update --nocolor add first-boot || true
+rc-update --verbose --update add first-boot
 
