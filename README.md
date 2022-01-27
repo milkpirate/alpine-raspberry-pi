@@ -1,7 +1,7 @@
 Alpine Raspberry PI
 
 This is a system install of Alpine linux for Raspberry Pi 0, 1, 2
-(`armv7`) and 3B, 3B+ and 4 (`aarch64`) image ready to burn
+(`armhf`) and 3B, 3B+ and 4 (`aarch64`) image ready to burn
 to an SD card via [balenaEtcher](https://www.balena.io/etcher/) (there's
 no need to gunzip image).
 
