@@ -18,7 +18,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         sudo snap install hub --classic
-        build_date=$(date +%Y%m%d)
+        build_date=$(date +%Y-%m-%d)
         build_number=$[$(git tag | grep $build_date | wc -l) + 1]
         tag="$build_date.$build_number"
         hub release create $tag -m "$tag" $(find . -name '*.gz' -exec echo -n '-a {} ' \;)
