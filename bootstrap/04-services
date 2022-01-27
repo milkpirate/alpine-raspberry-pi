@@ -2,7 +2,7 @@
 
 set -xe
 
-apk add eudev openssh haveged
+apk add eudev openssh haveged openrc
 
 for service in devfs dmesg; do
 	rc-update add $service sysinit
