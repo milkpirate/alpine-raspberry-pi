@@ -7,18 +7,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: build armhf/aarch64
-      uses: actions/checkout@v1
-      run: |
+    - uses: actions/checkout@v1
+
+    - run: |
         docker build runner -t runner
         docker run --privileged --rm -v /dev:/dev:ro -v "$PWD":/runner -w /runner -e ALPINE_BRANCH=latest-stable -e ALPINE_MIRROR="http://dl-cdn.alpinelinux.org/alpine" -e ARCH=aarch64 runner ./make-image
         docker run --privileged --rm -v /dev:/dev:ro -v "$PWD":/runner -w /runner -e ALPINE_BRANCH=latest-stable -e ALPINE_MIRROR="http://dl-cdn.alpinelinux.org/alpine" -e ARCH=armhf runner ./make-image
 
-    - name: create release
-      uses: elgohr/Github-Hub-Action@master
-#      with:
-#        args: release create $(date +%Y%m%d%H%M%S)
-      env:
+    - env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         sudo snap install hub --classic
