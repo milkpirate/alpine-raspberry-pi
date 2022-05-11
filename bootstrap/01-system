@@ -21,4 +21,5 @@ setup-timezone -z $TARGET_TIMEZONE
 # other stuff
 apk add openssh nano htop curl wget bash bash-completion findutils
 sed -i 's/\/bin\/ash/\/bin\/bash/g' /etc/passwd
+
 echo "ipv6" >> /etc/modules
